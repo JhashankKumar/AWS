@@ -60,3 +60,18 @@ SCPs protect these environments through several key mechanisms:
 * **Securing Governance and Policies:** SCPs can be configured to prevent the deletion or modification of critical security policies. Even a user with administrative privileges cannot bypass an SCP to tamper with these essential governance controls.
 
 Ultimately, SCPs are an extremely powerful tool for enterprise security governance because they ensure a permanent baseline of security compliance across all separated AWS accounts, making sure high-risk actions are blocked regardless of individual user permissions.
+
+# What is an IAM Identity Center?
+
+The AWS IAM Identity Center (formerly known as AWS SSO) serves as the central access portal for an organization's AWS environment. Instead of having employees log in with separate AWS usernames and passwords for multiple different accounts, companies use the Identity Center to manage all access in one place.
+
+Here are the key functions and characteristics of the IAM Identity Center:
+
+* **Centralized Access Management:** It acts as a gateway that decides which employees are allowed to access AWS, which specific AWS accounts they can open, the temporary IAM roles they can assume, and the exact permissions they receive.
+
+* **Integration with Corporate Identity Providers:** In large enterprise environments, the IAM Identity Center itself is usually not the actual authentication system. Instead, companies connect AWS to their existing corporate identity systems, such as Okta, Azure AD, or Google Workspace.
+
+* **Separation of Authentication and Access:** When integrated with a corporate system, the external identity provider handles the authentication process—verifying the employee's identity, ensuring they still work at the company, and managing Multi-Factor Authentication (MFA). Once authenticated, the IAM Identity Center takes over to handle the AWS access management portion.
+
+* **Startup vs. Enterprise Usage:** While enterprise companies typically connect the Identity Center to third-party providers, startups that do not have an external identity provider might use the AWS IAM Identity Center directly for their authentication.
+
