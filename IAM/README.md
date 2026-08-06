@@ -99,3 +99,15 @@ This means that even if an engineer is granted full local "administrator access"
 *   **Protect governance controls:** Block an administrator from attempting to delete or tamper with critical security policies. 
 
 By operating above individual account permissions, SCPs act as an extremely powerful tool for enterprise security governance, ensuring a strict baseline of security that no local administrator can bypass.
+
+# Can you explain the hierarchy of AWS Organizations?
+
+In enterprise environments, the hierarchy of **AWS Organizations** is designed to separate environments and enforce strict security boundaries rather than keeping all resources mixed together in a single AWS account. This structure functions across two primary levels:
+
+*   **The Organizational Level (Top Tier):** At the very top of the hierarchy is the AWS Organization itself. It is at this overarching level that companies apply **Service Control Policies (SCPs)**. Think of SCPs as strict, organizational-level guardrails that define the baseline security limits of what the accounts underneath them are never allowed to do.
+*   **The Account Level (Lower Tier):** Underneath the top organizational umbrella, the infrastructure is split into **multiple individual AWS accounts**. An enterprise will typically separate its workloads into a development account, testing account, staging account, production account, and security account. This strict isolation is highly necessary because production systems are extremely sensitive; keeping them in a separate account ensures that developers cannot accidentally delete servers, alter billing configurations, or inappropriately access customer data.
+
+**The Override Mechanism**
+The most critical feature of this hierarchy is how permissions flow downward. Because SCPs operate at the top organizational level, **they completely override any permissions granted at the local account level**. 
+
+This hierarchy ensures absolute enterprise security governance. For example, even if an engineer is granted full "administrator access" within their specific development account, an organizational SCP will still strictly block them from performing prohibited actions. No local administrator can bypass these top-tier rules, allowing the organization to permanently enforce restrictions such as blocking anyone from launching resources outside of a specific region (like the Mumbai region) or preventing the deletion of essential security policies.
