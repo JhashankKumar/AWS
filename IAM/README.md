@@ -122,3 +122,15 @@ Therefore, even if someone is granted full admin access within a specific accoun
 *   **Launching resources outside of an approved geographic region** (such as restricting all server deployments strictly to the Mumbai region).
 *   **Deleting critical security policies**, stopping even local admins from tampering with enterprise security governance.
 
+# Can an SCP override a local administrator's permissions?
+
+**Yes, a Service Control Policy (SCP) can absolutely override a local administrator's permissions.** 
+
+SCPs operate at the AWS Organizations level, acting as strict, organizational-level guardrails that define the absolute boundaries of what an AWS account is never allowed to do. Because they are applied at this top organizational tier, they completely override any local, account-level permissions. 
+
+This means that even if an engineer is granted full local "admin access" within a specific account (such as a development account), an SCP can still block them from performing prohibited actions. For example, an SCP can restrict an administrator from:
+*   **Launching resources outside of an approved geographic region** (such as restricting all deployments strictly to the Mumbai region).
+*   **Deleting critical security policies**, preventing local admins from tampering with enterprise security governance. 
+
+Because they override account-level permissions, SCPs are extremely powerful tools for maintaining enterprise security governance across multiple AWS accounts.
+
