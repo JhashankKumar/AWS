@@ -145,3 +145,16 @@ Based on the sources, common security guardrails enforced by SCPs include:
 
 By implementing these guardrails, enterprises ensure that highly sensitive environments maintain a permanent baseline of security that cannot be bypassed accidentally or maliciously by local account administrators.
 
+# Can I apply a different SCP to production and development?
+
+**Yes, you can absolutely apply different controls to production and development environments.** 
+
+In real-world enterprise architectures, you achieve this by using **AWS Organizations** to separate your environments into completely distinct AWS accounts, rather than mixing all your resources in a single account. 
+
+Here is how and why companies structure this to apply Service Control Policies (SCPs):
+
+*   **Account Separation:** You would create separate AWS accounts for your development team, testing team, and production environment. 
+*   **Protecting Sensitive Workloads:** This strict isolation is necessary because production is highly sensitive. Keeping it in a separate account ensures that developers cannot accidentally delete servers, alter critical configuration settings, or inappropriately access customer data.
+*   **Applying SCP Guardrails:** Once your environments are separated into multiple accounts under AWS Organizations, you can apply SCPs on top of them as organizational-level guardrails. 
+
+By structuring your AWS environment this way, you can enforce overarching enterprise security rules. For example, even if an engineer is granted full "administrator access" within their specific development account, an organizational SCP applied to that account will still block them from performing prohibited actions.
