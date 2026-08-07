@@ -111,3 +111,14 @@ In enterprise environments, the hierarchy of **AWS Organizations** is designed t
 The most critical feature of this hierarchy is how permissions flow downward. Because SCPs operate at the top organizational level, **they completely override any permissions granted at the local account level**. 
 
 This hierarchy ensures absolute enterprise security governance. For example, even if an engineer is granted full "administrator access" within their specific development account, an organizational SCP will still strictly block them from performing prohibited actions. No local administrator can bypass these top-tier rules, allowing the organization to permanently enforce restrictions such as blocking anyone from launching resources outside of a specific region (like the Mumbai region) or preventing the deletion of essential security policies.
+
+# How do SCPs block actions if an administrator has full access?
+
+Service Control Policies (SCPs) can block actions even if a user has full administrator access because **SCPs operate at the higher AWS Organizations level rather than the individual account level**. 
+
+Because they are applied at this top organizational tier, **SCPs act as strict guardrails that permanently override any local account-level permissions**. They explicitly define the absolute boundaries of what an AWS account is never allowed to do. 
+
+Therefore, even if someone is granted full admin access within a specific account (like a development account), the overarching SCP will still intervene to block them from performing prohibited actions. For example, an SCP can successfully restrict an administrator from:
+*   **Launching resources outside of an approved geographic region** (such as restricting all server deployments strictly to the Mumbai region).
+*   **Deleting critical security policies**, stopping even local admins from tampering with enterprise security governance.
+
