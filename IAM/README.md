@@ -134,3 +134,14 @@ This means that even if an engineer is granted full local "admin access" within 
 
 Because they override account-level permissions, SCPs are extremely powerful tools for maintaining enterprise security governance across multiple AWS accounts.
 
+# What are some common security guardrails used in SCPs?
+
+Service Control Policies (SCPs) act as strict, organizational-level guardrails that explicitly define what actions an AWS account is never allowed to perform. Because they are applied at the top AWS Organizations level, they completely override local account permissions, making them a highly powerful tool for enterprise security governance. 
+
+Based on the sources, common security guardrails enforced by SCPs include:
+
+*   **Geographic restrictions:** SCPs can block users from launching resources outside of a specific, approved location. For example, a company can use an SCP to ensure that servers and other resources are strictly deployed only within the Mumbai region.
+*   **Protecting security governance:** SCPs can prevent users—even those with full local administrator access in a development or testing account—from deleting or tampering with critical security policies. 
+
+By implementing these guardrails, enterprises ensure that highly sensitive environments maintain a permanent baseline of security that cannot be bypassed accidentally or maliciously by local account administrators.
+
